@@ -6,5 +6,6 @@ config = {
     "model" : 'gcn',
     "hiddensize" : 16,
     'dropout' : 0.5,
-    'weight_decay' : 5e-4
+    'weight_decay' : 5e-4,
+    'label_rate' : 20
 }

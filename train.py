@@ -29,9 +29,9 @@ features = features.to(device)
 y_train = y_train.to(device)
 y_val = y_val.to(device)
 y_test = y_test.to(device)
-train_mask = train_mask.to(device)
-val_mask = val_mask.to(device)
-test_mask = test_mask.to(device)
+# train_mask = train_mask.to(device)
+# val_mask = val_mask.to(device)
+# test_mask = test_mask.to(device)
 
 net = GCN(features.shape[1],hiddensize,labels.shape[1],dropout)
 net = net.to(device)
@@ -59,7 +59,7 @@ def train(epoch):
 
     print("epoch:{}\ttrain_loss:{}\ttrain_acc:{}\tval_loss:{}\tval_acc:{}".format(epoch+1,loss_train.item(),acc_train.item(),loss_val.item(),acc_val.item()))
 
-def test():
+def mytest():
     net.eval()
     out = net(adj,features)
     loss_test = F.nll_loss(out[idx_test],y_test)
@@ -72,4 +72,4 @@ for epoch in range(epochs):
     train(epoch)
 print("训练结束，共训练{}轮，总用时{}s".format(epochs,time.time()-t))
 print("开始在测试集上进行测试")
-test()
+mytest()

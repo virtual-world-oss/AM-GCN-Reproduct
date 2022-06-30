@@ -30,10 +30,18 @@ def np_to_tensor(matrix,dtype = torch.float32):
     return torch.tensor(matrix, dtype=dtype)
 
 def get_A_(adj):
-    adj = adj + np.eye(adj.shape[0])
+    # adj = adj + np.eye(adj.shape[0])
     degree = np.array(adj.sum(1))
     degree = np.diag(np.power(degree, -0.5))
     return degree.dot(adj).dot(degree)
+
+def normlize(matrix):
+    rowsum = np.array(matrix.sum(1))
+    r_inv = np.power(rowsum,-1).flatten()
+    r_inv[np.isinf(r_inv)] = 0.
+    r_mat_inv = sp.diags(r_inv)
+    matrix = r_mat_inv.dot(matrix)
+    return matrix
 
 if __name__ == '__main__':
     from dataloader import load_data
