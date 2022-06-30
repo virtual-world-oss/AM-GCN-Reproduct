@@ -218,4 +218,4 @@ if __name__ == '__main__':
         'cora')
     net = AMGCN(features.shape[1], 512, 128, labels.shape[1],0.5)
     out, Z_C_F, Z_C_T, Z_T, Z_F = net(AF_, adj, features)
-    print(out.shape)
+    print(out)

@@ -106,33 +106,51 @@ class Attention(nn.Module):
         self.q.data.uniform_(-border_val_q,border_val_q)
 
     def forward(self,Z_T,Z_C,Z_F):
-        out_T = F.tanh(torch.mm(self.W_T,torch.t(Z_T)) + self.b_T)
+        out_T = torch.tanh(torch.mm(self.W_T,torch.t(Z_T)) + self.b_T)
         out_T = torch.mm(torch.t(self.q),out_T)
-        out_T = F.softmax(out_T,dim=1)
-        print(out_T.size())
+        out_T = torch.softmax(out_T,dim=0)
+        # print(out_T.size())
         alpha_T = torch.diag_embed(out_T[0])
 
-        out_C = F.tanh(torch.mm(self.W_C,torch.t(Z_C)) + self.b_C)
+        out_C = torch.tanh(torch.mm(self.W_C,torch.t(Z_C)) + self.b_C)
         out_C = torch.mm(torch.t(self.q), out_C)
-        out_C = F.softmax(out_C,dim=1)
-        print(out_C.size())
+        out_C = torch.softmax(out_C,dim=0)
+        # print(out_C.size())
         alpha_C = torch.diag_embed(out_C[0])
 
-        out_F = F.tanh(torch.mm(self.W_F,torch.t(Z_F)) + self.b_F)
+        out_F = torch.tanh(torch.mm(self.W_F,torch.t(Z_F)) + self.b_F)
         out_F = torch.mm(torch.t(self.q),out_F)
-        out_F = F.softmax(out_F,dim=1)
-        print(out_F.size())
+        out_F = torch.softmax(out_F,dim=0)
+        # print(out_F.size())
         alpha_F = torch.diag_embed(out_F[0])
 
-        print(alpha_F.size())
-        print(alpha_T.size())
-        print(alpha_C.size())
+        # print(alpha_F.size())
+        # print(alpha_T.size())
+        # print(alpha_C.size())
 
         out = torch.mm(alpha_T,Z_T) + torch.mm(alpha_C,Z_C) + torch.mm(alpha_F, Z_F)
         return out
 
 # class classification_net
+class MLP(nn.Module):
+    def __init__(self,input_size,num_classes):
+        super(MLP, self).__init__()
+        self.input_size = input_size
+        self.num_classes = num_classes
 
+        self.W = Parameter(torch.FloatTensor(input_size,num_classes))
+        self.bias = Parameter(torch.FloatTensor(num_classes))
+        self.init_parameter()
+
+
+    def init_parameter(self):
+        border_val = 1. / math.sqrt(self.W.size(1))
+        self.W.data.uniform_(-border_val, border_val)
+        self.bias.data.uniform_(-border_val, border_val)
+
+    def forward(self,Z):
+        out = torch.mm(Z,self.W) + self.bias
+        return F.log_softmax(out,dim=1)
 
 class AMGCN(nn.Module):
     def __init__(self,input_size,hid_size1,hid_size2,num_classes,dropout,att_hid_size = 16):
@@ -150,7 +168,7 @@ class AMGCN(nn.Module):
 
         self.att = Attention(hid_size2,att_hid_size)
 
-        self.lin = nn.Linear(hid_size2,num_classes)
+        self.mlp = MLP(hid_size2,num_classes)
 
     def forward(self,AF_,AT_,features):
         Z_T = self.special_gcn1(AT_,features)
@@ -158,11 +176,13 @@ class AMGCN(nn.Module):
         Z_C_T = self.common_gcn(AT_,features)
         Z_C_F = self.common_gcn(AF_,features)
         Z_C = (Z_C_F + Z_C_T) / 2
-
+        # Z = Z_T
+        # Z = (Z_T + Z_F + Z_C_T + Z_C_F) / 4;
         Z = self.att(Z_T, Z_C, Z_F)
-        out = self.lin(Z)
-
-        return F.log_softmax(out), Z_C_F, Z_C_T, Z_T, Z_F
+        # print(Z.shape)
+        out = self.mlp(Z)
+        # print(out.shape)
+        return out, Z_C_F, Z_C_T, Z_T, Z_F
 
 # class GCN(nn.Module):
 #     def __init__(self,input_size,hidden_size,num_classes,dropout):
@@ -192,8 +212,8 @@ if __name__ == '__main__':
     # out = net(adj,features)
     # print(out)
     # summary(net)
-    # a = np.array([[1,2,3],[4,5,6]])
-    # a = torch.FloatTensor(a)
+    a = np.array([[1,2,3],[4,5,6]])
+    a = torch.FloatTensor(a)
 
     # print(a)
     # b = np.array([[1],[2]])
@@ -207,8 +227,8 @@ if __name__ == '__main__':
     # b = torch.diag_embed(b[0])
     # print(b)
     # print(b.size())
-    # net = nn.Linear()
+    # net = nn.Linear(3,5)
     # b = net(a)
-    # print(b.size())
+    # print(b)
 
     pass

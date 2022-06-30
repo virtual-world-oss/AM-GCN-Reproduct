@@ -4,7 +4,8 @@ config = {
     "device" : "cpu",
     "dataset" : 'cora',
     "model" : 'gcn',
-    "hiddensize" : 16,
+    "hiddensize1" : 512,
+    "hiddensize2" : 128,
     'dropout' : 0.5,
     'weight_decay' : 5e-4,
     'label_rate' : 20

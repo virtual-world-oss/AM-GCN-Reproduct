@@ -20,7 +20,8 @@ epochs = config['epoch']
 lr = config['lr']
 device = config['device']
 dataset_name = config['dataset']
-hiddensize = config['hiddensize']
+hiddensize1 = config['hiddensize1']
+hiddensize2 = config['hiddensize2']
 dropout = config['dropout']
 weight_decay = config['weight_decay']
 
@@ -34,7 +35,7 @@ y_test = y_test.to(device)
 # val_mask = val_mask.to(device)
 # test_mask = test_mask.to(device)
 
-net = GCN(features.shape[1],hiddensize,labels.shape[1],dropout)
+net = AMGCN(input_size=features.shape[1], hid_size1=hiddensize1, hid_size2=hiddensize2, num_classes=labels.shape[1], dropout=dropout)
 net = net.to(device)
 
 optimer = optim.Adam(net.parameters(),lr=lr,weight_decay=weight_decay)
@@ -48,12 +49,11 @@ def cal_acc(out,label):
 def train(epoch):
     net.train()
     optimer.zero_grad()
-    out = net(adj,features)
+    out, Z_C_F, Z_C_T, Z_T, Z_F = net(AF_, adj,features)
     loss_train = F.nll_loss(out[idx_train],y_train)
     acc_train = cal_acc(out[idx_train],y_train)
     loss_train.backward()
     optimer.step()
-
 
     loss_val = F.nll_loss(out[idx_val],y_val)
     acc_val = cal_acc(out[idx_val],y_val)
@@ -62,7 +62,7 @@ def train(epoch):
 
 def mytest():
     net.eval()
-    out = net(adj,features)
+    out, Z_C_F, Z_C_T, Z_T, Z_F = net(AF_, adj,features)
     loss_test = F.nll_loss(out[idx_test],y_test)
     acc_test = cal_acc(out[idx_test],y_test)
     print("测试结果：loss:{},acc:{}".format(loss_test.item(),acc_test.item()))
