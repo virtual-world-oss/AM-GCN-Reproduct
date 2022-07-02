@@ -174,6 +174,8 @@ def load_data(dataset_name):
 
     # print(y_train.shape)
 
+    # print('here is origin')
+
     adj = adj + sp.eye(adj.shape[0])
 
     features = normlize(features)
@@ -181,7 +183,8 @@ def load_data(dataset_name):
 
     adj = get_A_(sparse_to_np(adj))
     features = sparse_to_np(features)
-
+    # print(features.shape)
+    # AF_ = getAF_(features)
 
     adj = np_to_tensor(adj)
     features = np_to_tensor(features)
@@ -195,11 +198,14 @@ def load_data(dataset_name):
     val_mask = []
     test_mask = []
 
+
+    # AF_ = np_to_tensor(AF_)
+
     return adj, features, y_train, y_val, y_test, train_mask, val_mask, test_mask, labels, idx_train, idx_val, idx_test
 
 if __name__ == '__main__':
     # load_data('citeseer')
-    adj, features, y_train, y_val, y_test, train_mask, val_mask, test_mask,labels, idx_train, idx_val, idx_test = load_data('cora')
+    adj, features, y_train, y_val, y_test, train_mask, val_mask, test_mask,labels, idx_train, idx_val, idx_test = load_data(config['dataset'])
     # # print(y_train)
     # x = np.where(y_train)
     # x = features[idx_train]

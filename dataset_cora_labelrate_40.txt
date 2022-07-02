@@ -1,0 +1,24 @@
+2022-07-01 20:11:47.384422
+当前超参数与配置为：
+{'lr': 0.01, 'epoch': 50, 'device': 'cpu', 'dataset': 'cora', 'model': 'gcn', 'hiddensize': 16, 'dropout': 0.5, 'weight_decay': 0.0005, 'label_rate': 40}
+本次训练测试结果为：
+最佳正确率为:0.809,对应的macro_f1为:0.791563437454216,对应的训练轮次为:50
+
+
+
+2022-07-01 20:11:56.882083
+当前超参数与配置为：
+{'lr': 0.01, 'epoch': 50, 'device': 'cpu', 'dataset': 'cora', 'model': 'gcn', 'hiddensize': 16, 'dropout': 0.5, 'weight_decay': 0.0005, 'label_rate': 40}
+本次训练测试结果为：
+最佳正确率为:0.782,对应的macro_f1为:0.7741943452728085,对应的训练轮次为:46
+
+
+
+2022-07-01 20:12:05.387098
+当前超参数与配置为：
+{'lr': 0.01, 'epoch': 50, 'device': 'cpu', 'dataset': 'cora', 'model': 'gcn', 'hiddensize': 16, 'dropout': 0.5, 'weight_decay': 0.0005, 'label_rate': 40}
+本次训练测试结果为：
+最佳正确率为:0.773,对应的macro_f1为:0.7717283727805567,对应的训练轮次为:50
+
+
+

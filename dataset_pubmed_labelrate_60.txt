@@ -1,0 +1,24 @@
+2022-07-01 20:39:05.375474
+当前超参数与配置为：
+{'lr': 0.01, 'epoch': 50, 'device': 'cpu', 'dataset': 'pubmed', 'model': 'gcn', 'hiddensize': 16, 'dropout': 0.5, 'weight_decay': 0.0005, 'label_rate': 60}
+本次训练测试结果为：
+最佳正确率为:0.739,对应的macro_f1为:0.7360257432422381,对应的训练轮次为:50
+
+
+
+2022-07-01 20:40:56.279932
+当前超参数与配置为：
+{'lr': 0.01, 'epoch': 50, 'device': 'cpu', 'dataset': 'pubmed', 'model': 'gcn', 'hiddensize': 16, 'dropout': 0.5, 'weight_decay': 0.0005, 'label_rate': 60}
+本次训练测试结果为：
+最佳正确率为:0.745,对应的macro_f1为:0.7432051953067811,对应的训练轮次为:50
+
+
+
+2022-07-01 20:42:09.508710
+当前超参数与配置为：
+{'lr': 0.01, 'epoch': 50, 'device': 'cpu', 'dataset': 'pubmed', 'model': 'gcn', 'hiddensize': 16, 'dropout': 0.5, 'weight_decay': 0.0005, 'label_rate': 60}
+本次训练测试结果为：
+最佳正确率为:0.75,对应的macro_f1为:0.7497844690940277,对应的训练轮次为:49
+
+
+
