@@ -1,0 +1,24 @@
+2022-07-02 00:28:57.392339
+当前超参数与配置为：
+{'lr': 0.01, 'epoch': 50, 'device': 'cpu', 'dataset': 'citeseer', 'model': 'gcn', 'hiddensize': 16, 'dropout': 0.5, 'weight_decay': 0.0005, 'label_rate': 60}
+本次训练测试结果为：
+最佳正确率为:0.732,对应的macro_f1为:0.6970097477362974,对应的训练轮次为:37
+
+
+
+2022-07-02 00:33:54.119421
+当前超参数与配置为：
+{'lr': 0.01, 'epoch': 50, 'device': 'cpu', 'dataset': 'citeseer', 'model': 'gcn', 'hiddensize': 16, 'dropout': 0.5, 'weight_decay': 0.0005, 'label_rate': 60}
+本次训练测试结果为：
+最佳正确率为:0.752,对应的macro_f1为:0.7174489138634906,对应的训练轮次为:50
+
+
+
+2022-07-02 00:38:44.740592
+当前超参数与配置为：
+{'lr': 0.01, 'epoch': 50, 'device': 'cpu', 'dataset': 'citeseer', 'model': 'gcn', 'hiddensize': 16, 'dropout': 0.5, 'weight_decay': 0.0005, 'label_rate': 60}
+本次训练测试结果为：
+最佳正确率为:0.742,对应的macro_f1为:0.7051013239972512,对应的训练轮次为:47
+
+
+
