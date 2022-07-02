@@ -1,0 +1,8 @@
+2022-07-02 01:44:03.275651
+当前超参数与配置为：
+{'lr': 0.005, 'epoch': 50, 'device': 'cpu', 'dataset': 'cora', 'model': 'gcn', 'hiddensize1': 768, 'hiddensize2': 128, 'dropout': 0.5, 'weight_decay': 0.0005, 'label_rate': 60, 'gama': 0.001, 'beta': 0}
+本次训练测试结果为：
+最佳正确率为:0.848,对应的macro_f1为:0.8368596067298989,对应的训练轮次为:20
+
+
+

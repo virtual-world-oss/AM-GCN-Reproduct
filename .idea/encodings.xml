@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/dataset_citeseer_labelrate_20.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/dataset_citeseer_labelrate_40.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/dataset_citeseer_labelrate_60.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/dataset_cora_labelrate_20.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/dataset_cora_labelrate_20_d.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/dataset_cora_labelrate_20_full.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/dataset_cora_labelrate_40.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/dataset_cora_labelrate_40_c.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/dataset_cora_labelrate_40_d.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/dataset_cora_labelrate_40_full.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/dataset_cora_labelrate_40_wo.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/dataset_cora_labelrate_60.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/dataset_cora_labelrate_60_c.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/dataset_cora_labelrate_60_d.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/dataset_cora_labelrate_60_full.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/dataset_cora_labelrate_60_wo.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/log.txt" charset="GBK" />
+  </component>
+</project>

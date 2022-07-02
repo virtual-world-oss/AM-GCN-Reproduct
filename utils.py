@@ -34,7 +34,9 @@ def get_A_(adj):
     # adj = adj + np.eye(adj.shape[0])
     degree = np.array(adj.sum(1))
     degree = np.diag(np.power(degree, -0.5))
-    return degree.dot(adj).dot(degree)
+    degree = sp.coo_matrix(degree)
+    adj = sp.coo_matrix(adj)
+    return degree.dot(adj).dot(degree).toarray()
 
 def normlize(matrix):
     rowsum = np.array(matrix.sum(1))

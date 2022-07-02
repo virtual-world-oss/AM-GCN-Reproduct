@@ -1,12 +1,28 @@
 config = {
-    "lr" : 0.01,
-    "epoch" : 200,
+    "lr" : 0.005,
+    "epoch" : 50,
     "device" : "cpu",
     "dataset" : 'cora',
     "model" : 'gcn',
-    "hiddensize1" : 512,
+    "hiddensize1" : 768,
     "hiddensize2" : 128,
     'dropout' : 0.5,
     'weight_decay' : 5e-4,
-    'label_rate' : 20
+    'label_rate' : 60,
+    'gama' : 0.001,
+    'beta' : 5e-8,
 }
+# config = {
+#     "lr" : 0.005,
+#     "epoch" : 50,
+#     "device" : "cpu",
+#     "dataset" : 'cora',
+#     "model" : 'gcn',
+#     "hiddensize1" : 768,
+#     "hiddensize2" : 128,
+#     'dropout' : 0.5,
+#     'weight_decay' : 5e-4,
+#     'label_rate' : 40,
+#     'gama' : 0.001,
+#     'beta' : 5e-8,
+# }
